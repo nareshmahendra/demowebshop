@@ -105,7 +105,7 @@ try {
 	cs.enterText(BillingPage.txtBoxLastname, cs.properties.getProperty("lastName") , "Last NAme");
 	cs.enterText(BillingPage.txtBoxEmail, cs.properties.getProperty("emailID") , " email ID");
 	cs.selectValue(BillingPage.ddlCountry, cs.properties.getProperty("country") , "Country" );
-//	cs.enterText(BillingPage.txtBoxCity, cs.properties.getProperty("productQuantity") , "City");
+	cs.enterText(BillingPage.txtBoxCity, cs.properties.getProperty("city") , "City");
 	cs.enterText(BillingPage.txtBoxAddress1,cs.properties.getProperty("address1") , "Address ");
 	cs.enterText(BillingPage.txtBoxzip, cs.properties.getProperty("zip") , " zip/postal code ");
 	cs.enterText(BillingPage.txtBoxphone, cs.properties.getProperty("phone") , " phone number");
