@@ -2,7 +2,10 @@ package reusableLibrary;
 
 import objectRepository.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Properties;
 
 import org.jsoup.select.Selector;
 import org.openqa.selenium.By;
@@ -19,11 +22,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class ReusableLibrary {
 	public WebDriver driver;
+	public String propertiesFilePath = System.getProperty("user.dir") + "\\config.properties";
+	public Properties properties = new Properties();
+	String cWorkingFolder = System.getProperty("user.dir");
 
-	public ReusableLibrary() {
+	public ReusableLibrary() throws Exception {
 //WebDriverManager.chromedriver().setup();
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", cWorkingFolder +"\\"+ getPropertyValue("chromeDriverPath"));
 		driver = new ChromeDriver();
+
+		FileInputStream fileInputStream = new FileInputStream(propertiesFilePath);
+		properties.load(fileInputStream);
 	}
 
 	public void launchSite(String url) {
@@ -118,6 +127,12 @@ public class ReusableLibrary {
 		verifyText(HomePageAndProductsPage.txtEmptyShoppingcartText, "Your Shopping Cart is empty!",
 				"verifying shopping cart empty");
 
+	}
+
+	public String getPropertyValue(String key) throws Exception {
+		FileInputStream fileInputStream = new FileInputStream(propertiesFilePath);
+		properties.load(fileInputStream);
+		return properties.get(key).toString();
 	}
 
 }
