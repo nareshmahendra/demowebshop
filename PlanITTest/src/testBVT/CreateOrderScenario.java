@@ -76,7 +76,7 @@ try {
 	
 	//verifying product details & checkout
 	//verifying success message after add to cart 
-	cs.verifyText(ProductDetailsPage.txtAddtoCartMessage , "Message" , "validating suceessmessage after add to cart ");
+	cs.verifyText(ProductDetailsPage.txtAddtoCartMessage , "The product has been added to your shopping cart" , "validating suceessmessage after add to cart ");
 	cs.scrollToElementUP();
 	
 	//clicking on shopping cart link
@@ -124,12 +124,12 @@ try {
 	cs.click(BillingPage.btnPaymentContinue , "continue payment button");
 	
 	//confirmation
-	cs.verifyText(BillingPage.txtCODmessage , "Message" , " COD acknownledge text");
+	cs.verifyText(BillingPage.txtCODmessage , "You will pay by COD" , " COD acknownledge text");
 	cs.click(BillingPage.btnPaymentContinueAfterConfirmation ,"continue COD  button");
 	
 	// order confirmation
 	cs.click(BillingPage.btnConfirmOrder , " confirm order button" );
-	cs.verifyText(BillingPage.txtOrderConformationMessage , "Message" , " order acknownledge text");
+	cs.verifyText(BillingPage.txtOrderConformationMessage , "Your order has been successfully processed!" , " order acknownledge text");
 	
 	//order number
 	String orderNumber = cs.driver.findElement(BillingPage.txtOrderNumber).getText().replaceAll("\\D+","");
